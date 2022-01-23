@@ -3,12 +3,12 @@ import React from "react";
 import Link from "next/link";
 import { AppBar, Container, Toolbar, Typography } from "@material-ui/core";
 import useStyles from "../utils/styles";
-export default function LayOut({ children }) {
+export default function LayOut({title, children }) {
   const classes = useStyles();
   return (
     <div>
       <Head>
-        <title>Online-Shop</title>
+        <title>{title? `${title}`: "Online-Shop"}</title>
       </Head>
       <AppBar position="static" className={classes.navbar}>
         <Toolbar>

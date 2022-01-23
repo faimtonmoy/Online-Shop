@@ -17,6 +17,14 @@ const useStyles= makeStyles({
     },
     main:{
         minHeight: '80vh',
+    },
+    section:{
+        marginTop:10,
+        marginBottom:10,
+    },
+    details:{
+        fontWeight: 'bold',
+        fontSize: '2rem',
     }
 })
 export default useStyles;
