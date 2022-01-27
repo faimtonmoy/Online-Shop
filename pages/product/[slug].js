@@ -4,7 +4,7 @@ import data from "../../utils/data";
 import Layout from "../../Components/Layout";
 import Link from "next/link";
 import useStyles from "../../utils/styles";
-import { Button, Card, Grid, List, ListItem } from "@material-ui/core";
+import { Button, Card, Grid } from "@material-ui/core";
 import Image from "next/image";
 export default function ProductDetails() {
   const classes = useStyles();
