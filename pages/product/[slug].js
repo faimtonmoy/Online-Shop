@@ -7,6 +7,7 @@ import Image from "next/image";
 import db from "../../utils/db";
 import Product from "../../models/Product";
 import { Store } from "../../utils/Store";
+import { useRouter } from "next/router";
 
 
 
@@ -14,6 +15,7 @@ export default function ProductDetails(props) {
   const { dispatch}= useContext(Store);
   const {product}= props;
   const classes = useStyles();
+  const router= useRouter();
  
   if (!product) {
     return <div>Product Not Available</div>;
@@ -26,6 +28,7 @@ export default function ProductDetails(props) {
     //   return;
     // }
     dispatch({type:'CART_ADD_ITEM', payload: {...product, quantity:1}});
+    router.push('/cart');
   };
   return (
     <Layout title={product.name}>
