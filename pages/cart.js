@@ -11,15 +11,20 @@ import {
 } from "@material-ui/core";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import LayOut from "../Components/Layout";
 import { Store } from "../utils/Store";
 
 export default function CartScreen() {
+  const router= useRouter()
   const { state } = useContext(Store);
   const {
     cart: { cartItems },
   } = state;
+  const checkOutHandler=()=>{
+    router.push('/checkout')
+  }
   return (
     <LayOut title="Shopping Cart">
       <h1>Shopping Cart</h1>
@@ -81,7 +86,7 @@ export default function CartScreen() {
                 </h4>
               </li>
             </ul>
-            <Button color='primary'>Check Out</Button>
+            <Button onClick={checkOutHandler} color='primary'>Check Out</Button>
           </Card>
         </Grid>
       </Grid>

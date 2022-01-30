@@ -13,9 +13,18 @@ import data from "../utils/data";
 import Link from "next/link";
 import db from "../utils/db";
 import Product from "../models/Product";
+import { useContext } from "react";
+import { Store } from "../utils/Store";
+import { useRouter } from "next/router";
 
 export default function Home(props) {
+  const {dispatch}= useContext(Store);
+  const router= useRouter();
   const {products}= props;
+  const addToCartHandler= async(product)=>{
+    dispatch({type:'CART_ADD_ITEM', payload: {...product, quantity:1}});
+    router.push('/cart');
+  };
   return (
     <div>
       <LayOut>
@@ -42,7 +51,7 @@ export default function Home(props) {
                 <CardActions>
                   <Typography> ${product.price}</Typography>
                 </CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={()=>addToCartHandler(product)}>
                   Add to cart
                 </Button>
               </Card>

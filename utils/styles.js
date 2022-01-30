@@ -25,6 +25,11 @@ const useStyles= makeStyles({
     details:{
         fontWeight: 'bold',
         fontSize: '2rem',
-    }
+    },
+    form: {
+        width: '100%',
+        maxWidth: 800,
+        margin: '0 auto',
+      },
 })
 export default useStyles;

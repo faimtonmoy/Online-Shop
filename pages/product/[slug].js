@@ -21,12 +21,6 @@ export default function ProductDetails(props) {
     return <div>Product Not Available</div>;
   }
   const addToCartHandler= async()=>{
-    //const {data}= await fetch(`api/products/${product._id}`);
-    // if(data.countInStock <=0)
-    // {
-    //   window.alert('Sorry, Product is out of stock');
-    //   return;
-    // }
     dispatch({type:'CART_ADD_ITEM', payload: {...product, quantity:1}});
     router.push('/cart');
   };
