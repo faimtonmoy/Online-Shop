@@ -29,7 +29,7 @@ export default function CheckOut() {
       type: "SAVE_SHIPPING_ADDRESS",
       payload: { name, email, address },
     });
-    dispatch({ type: "CART_CLEAR" });
+    
     router.push("/orderdetails");
   };
 

@@ -1,4 +1,5 @@
 import {
+  Button,
   Card,
   Grid,
   List,
@@ -10,7 +11,6 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
-import { mergeClasses } from "@material-ui/styles";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -22,16 +22,30 @@ import useStyles from "../utils/styles";
 export default function OrderDetails() {
   const classes = useStyles();
   const router = useRouter();
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const {
-    cart: { cartItems },
+    cart: { cartItems, shippingAddress },
   } = state;
-
+  const placeOrderHandler = () => {
+    dispatch({ type: "CART_CLEAR" });
+    router.push("/");
+  };
   return (
-    <LayOut title="Shopping Cart">
+    <LayOut title="Order Details">
       <h1>Order Details</h1>
       <Grid container>
         <Grid item md={9}>
+          <Card className={classes.section}>
+            <List>
+              <ListItem>
+                <h2>Buyers Information</h2>
+              </ListItem>
+              <ListItem>
+                {shippingAddress.name}, {shippingAddress.email}, {' '}
+                {shippingAddress.address}
+              </ListItem>
+            </List>
+          </Card>
           <Card className={classes.section}>
             <List>
               <ListItem>
@@ -97,6 +111,9 @@ export default function OrderDetails() {
                 </h4>
               </li>
             </ul>
+            <Button onClick={placeOrderHandler} color="primary">
+              Place Order
+            </Button>
           </Card>
         </Grid>
       </Grid>
